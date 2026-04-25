@@ -77,7 +77,7 @@ export function ProjectsGridCard({
 
 	return (
 		<div className="flex flex-col h-full w-full overflow-hidden">
-			<Card className="flex items-center mb-3 flex-wrap p-2 gap-2 compact:p-1 compact:gap-1">
+			<Card className="flex flex-row items-center mb-3 p-2 gap-2 compact:p-1 compact:gap-1">
 				<p className="grow-0 whitespace-pre pl-2 leading-tight">
 					{tc("projects:sort by")}
 				</p>
