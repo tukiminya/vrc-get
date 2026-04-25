@@ -38,6 +38,7 @@ import {
 	SelectItem,
 	SelectLabel,
 	SelectTrigger,
+	SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -306,11 +307,7 @@ function UnityVersionSelector({
 			onValueChange={requestChangeUnityVersion}
 		>
 			<SelectTrigger className={"compact:h-10"}>
-				{detailsResult.status === "success" ? (
-					(detailsResult.data.unity_str ?? "unknown")
-				) : (
-					<span className={"text-primary"}>Loading...</span>
-				)}
+				<SelectValue placeholder="Loading..." />
 			</SelectTrigger>
 			<SelectContent>
 				<SelectGroup>{unityVersionList}</SelectGroup>
