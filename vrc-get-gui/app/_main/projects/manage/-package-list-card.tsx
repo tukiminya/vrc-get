@@ -178,7 +178,7 @@ export const PackageListCard = memo(function PackageListCard({
 
 	return (
 		<Card className="grow shrink flex shadow-none w-full">
-			<CardContent className="w-full p-2 flex flex-col gap-2 compact:p-1 compact:gap-1.5">
+			<CardContent className="w-full p-2 flex flex-col gap-2 overflow-hidden compact:p-1 compact:gap-1.5">
 				<ManagePackagesHeading
 					packageRowsData={packageRowsData}
 					hiddenUserRepositories={hiddenUserRepositories}
@@ -1009,33 +1009,23 @@ const PackageVersionSelector = memo(function PackageVersionSelector({
 
 	const { isLoading } = usePageContext();
 
-	const [isOpen, setIsOpen] = useState(false);
-
 	return (
 		<Select
 			value={selectedVersion}
 			onValueChange={onChange}
 			disabled={isLoading}
-			open={isOpen}
-			onOpenChange={setIsOpen}
 		>
 			<SelectTrigger>
 				<SelectValue
-					asChild
 					placeholder={<PackageInstalledInfo pkg={pkg} />}
 					className={`border-primary/10 ${pkg.installed?.yanked ? "text-destructive" : ""}`}
-				>
-					<PackageInstalledInfo pkg={pkg} />
-				</SelectValue>
+				/>
 			</SelectTrigger>
 			<SelectContent className="max-h-[min(24rem,45vh)]">
-				{/* PackageVersionList is extremely heavy */}
-				{isOpen && (
-					<PackageVersionList
-						versionNames={versionNames}
-						incompatibleNames={incompatibleNames}
-					/>
-				)}
+				<PackageVersionList
+					versionNames={versionNames}
+					incompatibleNames={incompatibleNames}
+				/>
 			</SelectContent>
 		</Select>
 	);
